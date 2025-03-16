@@ -17,3 +17,8 @@ services:
       - 22000:22000/udp
       - 21027:21027/udp
     restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: main

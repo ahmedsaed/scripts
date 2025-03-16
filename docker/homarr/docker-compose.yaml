@@ -25,3 +25,8 @@ services:
     privileged: true
     volumes:
       - /:/mnt/host:ro
+
+networks:
+  default:
+    external: true
+    name: main

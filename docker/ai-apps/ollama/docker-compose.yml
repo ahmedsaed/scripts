@@ -23,6 +23,10 @@ services:
       image: ghcr.io/matatonic/openedai-speech-min
       container_name: openedai-speech
       volumes:
-        - /home/ahmed/apps/openedai/voices:/app/voices
-        - /home/ahmed/apps/openedai/config:/app/config
+        - ${HOME}/apps/openedai/voices:/app/voices
+        - ${HOME}/apps/openedai/config:/app/config
 
+networks:
+  default:
+    external: true
+    name: main
