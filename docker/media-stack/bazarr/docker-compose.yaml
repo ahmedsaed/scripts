@@ -9,8 +9,13 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ${HOME}/bazarr/config:/config
-      - /path/to/movies:/movies #optional
-      - /path/to/tv:/tv #optional
+      - ${HOME}/Media:/media
+      - "/mnt/disk2/TV Shows:/mnt/disk2/TV Shows" # mount symbloic links
     ports:
       - 6767:6767
     restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: main
