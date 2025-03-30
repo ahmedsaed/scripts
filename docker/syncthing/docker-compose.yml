@@ -10,7 +10,9 @@ services:
       - TZ=Africa/Cairo
     volumes:
       - ${HOME}/apps/syncthing/config:/config
-      - ${HOME}/Media/Downloads/seedbox:/Downloads
+      - ${HOME}/Media/:/Media
+      - ${HOME}/Downloads:/Downloads
+      - ${HOME}/Documents:/Documents
     ports:
       - 8384:8384
       - 22000:22000/tcp

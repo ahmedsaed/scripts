@@ -13,10 +13,11 @@ services:
         - ${HOME}/apps/qbittorrent/config:/config
         - ${HOME}/Media:/data
         - ${HOME}/torrents:/torrents
-    ports:
-      - 8446:8446
-      - 6881:6881
-      - 6881:6881/udp
+    network_mode: host
+#    ports:
+#      - 8446:8446
+#      - 6881:6881
+#      - 6881:6881/udp
     restart: unless-stopped
 
 networks:
