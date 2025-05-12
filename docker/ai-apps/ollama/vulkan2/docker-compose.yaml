@@ -1,0 +1,20 @@
+name: ollama-vulkan
+services:
+    ollama-amd-apu:
+        restart: always
+        volumes:
+            - /opt/ai-apps/ollama:/root/.ollama
+            # - /opt/amdgpu/:/opt/amdgpu/
+        ports:
+            - 11434:11434
+        container_name: ollama
+        devices:
+            - /dev/kfd
+            - /dev/dri
+        cap_add:
+            - CAP_PERFMON
+        environment:
+            - OLLAMA_MAX_LOADED_MODELS=1
+            - OLLAMA_FLASH_ATTENTION=1
+            - OLLAMA_KV_CACHE_TYPE=q8_0
+        image: docker.io/grinco/ollama-amd-apu:vulkan
