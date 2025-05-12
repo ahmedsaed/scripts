@@ -5,7 +5,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - /opt/ai-apps/ollama:/root/.ollama
+      - ${HOME}/apps/ollama:/root/.ollama
     restart: unless-stopped
 
   open-webui:
@@ -14,7 +14,7 @@ services:
     ports:
       - "3002:8080"
     volumes:
-      - /opt/ai-apps/open-webui:/app/backend/data
+      - ${HOME}/apps/open-webui:/app/backend/data
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
     restart: unless-stopped
@@ -22,6 +22,7 @@ services:
   openedai-speech:
       image: ghcr.io/matatonic/openedai-speech-min
       container_name: openedai-speech
+      restart: unless-stopped
       volumes:
         - ${HOME}/apps/openedai/voices:/app/voices
         - ${HOME}/apps/openedai/config:/app/config

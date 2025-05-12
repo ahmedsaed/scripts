@@ -11,7 +11,7 @@ services:
     volumes:
         - ${HOME}/apps/sonarr:/config
         - ${HOME}/Media:/data
-        - "/DATA/Media/TV Shows:/data/TV Shows"
+        - "/mnt/disk2/TV Shows:/data/TV Shows"
     ports:
         - 8989:8989
     restart: unless-stopped

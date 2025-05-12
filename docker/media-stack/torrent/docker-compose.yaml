@@ -12,7 +12,7 @@ services:
     volumes:
         - ${HOME}/apps/qbittorrent/config:/config
         - ${HOME}/Media:/data
-        - ${HOME}/torrents:/torrents
+        - ${HOME}/Downloads/torrents:/torrents
     network_mode: host
 #    ports:
 #      - 8446:8446
