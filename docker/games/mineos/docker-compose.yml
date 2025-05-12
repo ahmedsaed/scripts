@@ -6,8 +6,8 @@ services:
     environment:
       SERVER_PORT: "8443"
       USE_HTTPS: "false"
-      USER_NAME: ahmed
-      USER_PASSWORD: as2652003
+      USER_NAME: ${USERNAME}
+      USER_PASSWORD: ${PASSWORD}
       USER_UID: "1000"
     ports:
       - 8444:8443
