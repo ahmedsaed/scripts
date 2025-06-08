@@ -7,4 +7,7 @@ services:
     volumes:
       - ${HOME}/apps/adguard/opt/adguardhome/work:/opt/adguardhome/work
       - ${HOME}/apps/adguard/opt/adguardhome/conf:/opt/adguardhome/conf
-    network_mode: host
+    ports:
+      - 192.168.1.200:53:53/udp
+      - 192.168.1.200:53:53/tcp
+      - 3000:3000

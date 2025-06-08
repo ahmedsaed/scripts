@@ -1,6 +1,9 @@
 services:
   mineos:
-    image: hexparrot/mineos:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: hexparrot/mineos:latest
     container_name: mineos_server
     hostname: mineos_server
     environment:
