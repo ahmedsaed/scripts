@@ -7,6 +7,15 @@ services:
     volumes:
       - ${HOME}/apps/ollama:/root/.ollama
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              # 'count: all' uses all available GPUs. You can specify a number (e.g., 1) for a specific one.
+              count: all
+              capabilities: ["gpu"]
+
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
