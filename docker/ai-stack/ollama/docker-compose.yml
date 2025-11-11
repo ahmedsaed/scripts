@@ -5,7 +5,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - /opt/ai-apps/ollama:/root/.ollama
+      - ${HOME}/apps/ollama:/root/.ollama
     restart: unless-stopped
 
   open-webui:
