@@ -1,15 +1,11 @@
 services:
   ollama:
-    image: docker.io/grinco/ollama-amd-apu:vulkan # ollama/ollama:latest
+    image: ollama/ollama
     container_name: ollama
     ports:
       - "11434:11434"
     volumes:
       - ${HOME}/apps/ollama:/root/.ollama
-    devices:
-      - /dev/dri:/dev/dri
-    cap_add:
-      - PERFMON
     restart: unless-stopped
 
   open-webui:

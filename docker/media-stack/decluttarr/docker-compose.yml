@@ -1,0 +1,14 @@
+services:
+  decluttarr:
+    image: ghcr.io/manimatter/decluttarr:latest
+    container_name: decluttarr
+    restart: always
+    environment:
+      TZ: Europe/Zurich
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - ${HOME}/apps/decluttarr/config.yaml:/app/config/config.yaml
+      # - $DOCKERDIR/appdata/decluttarr/logs:/app/logs # Uncomment to get logs in text file, too
+      # - $DOCKERDIR/appdata/decluttarr/logs:/app/logs # Uncomment to get logs in text file, too
+      # - $DATADIR/media:/media # If you use detect_deletions, add the identical mount paths that you use in your sonarr/radarr instances. This may be different to this example!

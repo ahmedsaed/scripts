@@ -13,12 +13,27 @@ services:
       - ${HOME}/Media/:/Media
       - ${HOME}/Downloads:/Downloads
       - ${HOME}/Documents:/Documents
+      - /mnt/disk2:/mnt/disk2 # mount other disks for symbloic links
     ports:
       - 8384:8384
       - 22000:22000/tcp
       - 22000:22000/udp
       - 21027:21027/udp
     restart: unless-stopped
+
+  wd-syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: wd-syncthing
+    hostname: wd-syncthing #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Africa/Cairo
+    ports:
+      - 8385:8384
+    volumes:
+      - ${HOME}/apps/wd-syncthing/config:/config
+      - /mnt/wd-backup/Media/:/Media
 
 networks:
   default:
