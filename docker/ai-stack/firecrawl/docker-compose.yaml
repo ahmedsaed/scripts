@@ -169,19 +169,24 @@ services:
   
   nuq-postgres:
     restart: unless-stopped
-    build: apps/nuq-postgres
+    image: postgres:16-alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-postgres}
     networks:
       - backend
+    volumes:
+      - nuq_pgdata:/var/lib/postgresql/data
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
         compress: "true"
+
+volumes:
+  nuq_pgdata:
 
 networks:
   backend:
