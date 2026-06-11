@@ -10,8 +10,6 @@ services:
     volumes:
       - ${HOME}/apps/bazarr/config:/config
       - ${HOME}/Media:/media
-      - "/mnt/disk1/Media:/mnt/disk1/Media" # mount symbolic links
-      - "/mnt/disk2/TV Shows:/mnt/disk2/TV Shows" # mount symbloic links
     ports:
       - 6767:6767
     restart: unless-stopped

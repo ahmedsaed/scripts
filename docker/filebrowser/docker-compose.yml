@@ -1,0 +1,22 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    restart: unless-stopped
+    ports:
+      - "8500:80"
+    volumes:
+      - /home/ahmed:/srv
+      - /mnt/disk1:/mnt/disk1
+      - filebrowser_data:/database
+    environment:
+      - FB_BASEURL=/filebrowser
+    tty: true
+
+volumes:
+  filebrowser_data:
+
+networks:
+  default:
+    external: true
+    name: main

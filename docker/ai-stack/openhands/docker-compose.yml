@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  openhands:
+    image: docker.openhands.dev/openhands/openhands:1.6
+    container_name: openhands-app
+    # Environment Variables
+    environment:
+      - AGENT_SERVER_IMAGE_REPOSITORY=ghcr.io/openhands/agent-server
+      - AGENT_SERVER_IMAGE_TAG=1.15.0-python
+      - LOG_ALL_EVENTS=true
+      - OH_WEB_URL=http://server.home:3012
+#      - OH_PERMITTED_CORS_ORIGINS_0=http://server.home:3012
+      - SANDBOX_CONTAINER_URL_PATTERN=http://server.home:{port}
+      - SANDBOX_HOST_PORT=3012
+    # Volume Mounts
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.openhands:/.openhands
+      - ./config.toml:/app/config.toml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Port Mapping (expose internal port 3000 on host port 3012)
+    ports:
+      - "3012:3000"
+    restart: unless-stopped

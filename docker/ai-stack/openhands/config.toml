@@ -1,0 +1,20 @@
+[llm]
+model = "openai/qwen"
+base_url = "http://192.168.1.70:8080/v1"
+api_key = "none"
+max_input_tokens = 162144    # match your llama.cpp --ctx-size
+max_output_tokens = 32768
+
+[condenser]
+type = "structured"
+max_size = 80        # trigger condensation after 80 events
+keep_first = 2       # always keep first 2 events (system prompt + initial user task)
+max_event_length = 10000  # truncate individual events to 10k chars before summarizing
+
+[condenser.llm_config]
+model = "openai/qwen"
+base_url = "http://192.168.1.70:8080/v1"
+api_key = "none"
+max_input_tokens = 162144    # match your llama.cpp --ctx-size
+max_output_tokens = 32768
+native_tool_calling = true   # REQUIRED — model must actually do tool calls

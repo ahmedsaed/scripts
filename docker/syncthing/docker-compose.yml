@@ -10,10 +10,9 @@ services:
       - TZ=Africa/Cairo
     volumes:
       - ${HOME}/apps/syncthing/config:/config
-      - ${HOME}/Media/:/Media
+      - ${HOME}/Media:/Media
       - ${HOME}/Downloads:/Downloads
       - ${HOME}/Documents:/Documents
-      - /mnt/disk2:/mnt/disk2 # mount other disks for symbloic links
     ports:
       - 8384:8384
       - 22000:22000/tcp

@@ -2,9 +2,9 @@ services:
   decluttarr:
     image: ghcr.io/manimatter/decluttarr:latest
     container_name: decluttarr
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: Europe/Zurich
+      TZ: Africa/Cairo
       PUID: 1000
       PGID: 1000
     volumes:

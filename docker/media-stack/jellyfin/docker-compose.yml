@@ -18,8 +18,6 @@ services:
       - ${HOME}/apps/jellyfin/config:/config
       - ${HOME}/apps/jellyfin/cache:/cache
       - ${HOME}/Media:/media
-      - "/mnt/disk1/Media:/mnt/disk1/Media" # mount symbolic links
-      - "/mnt/disk2/TV Shows:/mnt/disk2/TV Shows" # mount symlinked directory to avoid issues with docker bind mounts
     restart: 'unless-stopped'
     # Optional - may be necessary for docker healthcheck to pass if running in host network mode
     extra_hosts:

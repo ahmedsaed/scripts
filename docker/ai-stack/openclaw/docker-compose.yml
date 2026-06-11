@@ -1,0 +1,82 @@
+services:
+  openclaw-gateway:
+    # Build from the extended Dockerfile (pre-baked deps, non-root)
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OPENCLAW_IMAGE: ${OPENCLAW_IMAGE:-ghcr.io/openclaw/openclaw:latest}
+        RENDER_GID: ${RENDER_GID:-107}
+    # Run as node user with host's docker GID for socket access.
+    # Set DOCKER_GID in .env:  getent group docker | cut -d: -f3
+    user: "${CONTAINER_UID:-1000}:${DOCKER_GID:-1000}"
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
+      GOG_KEYRING_PASSWORD: ${GOG_KEYRING_PASSWORD}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      DEEPSEEK_WORK_API_KEY: ${DEEPSEEK_WORK_API_KEY}
+    volumes:
+      - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
+      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_HOME_VOLUME}:/home/node
+      - ${OPENCLAW_HOME_VOLUME}/.linuxbrew:/home/linuxbrew/.linuxbrew:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOME}:${HOME}:ro
+      - ${HOME}/scripts:${HOME}/scripts
+      - /mnt/disk1:/mnt/disk1:ro
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - "${RENDER_GID:-107}"
+    ports:
+      - "${OPENCLAW_GATEWAY_PORT:-18789}:18789"
+      - "${OPENCLAW_BRIDGE_PORT:-18790}:18790"
+      - "${OPENCLAW_TELEGRAM_PORT:-8788}:8788"
+      - "${OPENCLAW_VOICE_PORT:-3334}:3334"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    init: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:18789/health', r => { process.exit(r.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    command:
+      [
+        "node",
+        "dist/index.js",
+        "gateway",
+        "--bind",
+        "${OPENCLAW_GATEWAY_BIND:-lan}",
+        "--port",
+        "18789",
+      ]
+
+  openclaw-cli:
+    image: ${OPENCLAW_IMAGE:-openclaw:local}
+    user: "${CONTAINER_UID:-1000}:${DOCKER_GID:-1000}"
+    environment:
+      HOME: /home/node
+      TERM: xterm-256color
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
+      BROWSER: echo
+      OPENCLAW_GATEWAY_URL: ws://127.0.0.1:18789
+    network_mode: "service:openclaw-gateway"
+    volumes:
+      - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
+      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+      - ${OPENCLAW_HOME_VOLUME}:/home/node
+      - ${OPENCLAW_HOME_VOLUME}/.linuxbrew:/home/linuxbrew/.linuxbrew:rw
+    stdin_open: true
+    tty: true
+    init: true
+    entrypoint: ["node", "dist/index.js"]
+
+networks:
+  default:
+    external: true
+    name: main
