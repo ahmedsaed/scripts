@@ -1,10 +1,12 @@
 name: Build OpenClaw Docker Image
 
 on:
-  push:
-    paths:
-      - 'docker/ai-stack/openclaw/**'
-  workflow_dispatch:  # manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'OpenClaw version (e.g. 2026.6.8)'
+        required: true
+        type: string
 
 jobs:
   build:
@@ -27,4 +29,8 @@ jobs:
         with:
           context: docker/ai-stack/openclaw
           push: true
-          tags: ghcr.io/ahmedsaed/openclaw:latest
+          build-args: |
+            OPENCLAW_IMAGE=ghcr.io/openclaw/openclaw:${{ inputs.version }}
+          tags: |
+            ghcr.io/ahmedsaed/openclaw:latest
+            ghcr.io/ahmedsaed/openclaw:${{ inputs.version }}
