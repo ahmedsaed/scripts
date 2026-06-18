@@ -1,12 +1,6 @@
 services:
   openclaw-gateway:
-    # Build from the extended Dockerfile (pre-baked deps, non-root)
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        OPENCLAW_IMAGE: ${OPENCLAW_IMAGE:-ghcr.io/openclaw/openclaw:latest}
-        RENDER_GID: ${RENDER_GID:-107}
+    image: ghcr.io/ahmedsaed/openclaw:latest
     # Run as node user with host's docker GID for socket access.
     # Set DOCKER_GID in .env:  getent group docker | cut -d: -f3
     user: "${CONTAINER_UID:-1000}:${DOCKER_GID:-1000}"
@@ -57,7 +51,7 @@ services:
       ]
 
   openclaw-cli:
-    image: ${OPENCLAW_IMAGE:-openclaw:local}
+    image: ghcr.io/ahmedsaed/openclaw:latest
     user: "${CONTAINER_UID:-1000}:${DOCKER_GID:-1000}"
     environment:
       HOME: /home/node
