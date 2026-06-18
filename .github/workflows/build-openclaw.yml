@@ -1,0 +1,29 @@
+name: Build OpenClaw Docker Image
+
+on:
+  push:
+    paths:
+      - 'docker/ai-stack/openclaw/**'
+  workflow_dispatch:  # manual trigger from GitHub UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ahmedsaed
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: docker/ai-stack/openclaw
+          push: true
+          tags: ghcr.io/ahmedsaed/openclaw:latest
