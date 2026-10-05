@@ -1,0 +1,173 @@
+{"label": "old-b9544", "model": "qwen-3.5", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 505.6, "gen_n": 512, "tg_tps": 53.8, "wall_s": 9.7}
+{"label": "old-b9544", "model": "qwen-3.5", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 511.5, "gen_n": 512, "tg_tps": 53.6, "wall_s": 9.7}
+{"label": "old-b9544", "model": "qwen-3.5", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1603.1, "gen_n": 122, "tg_tps": 50.6, "wall_s": 11.2}
+{"label": "old-b9544", "model": "qwen-3.5", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1604.1, "gen_n": 122, "tg_tps": 50.4, "wall_s": 11.2}
+{"label": "old-b9544", "model": "qwen-3.5-high-ctx", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 22.8, "gen_n": 512, "tg_tps": 13.8, "wall_s": 39.0}
+{"label": "old-b9544", "model": "qwen-3.5-high-ctx", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 79.4, "gen_n": 512, "tg_tps": 19.2, "wall_s": 27.2}
+{"label": "old-b9544", "model": "qwen-3.5-high-ctx", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 742.6, "gen_n": 115, "tg_tps": 13.1, "wall_s": 27.6}
+{"label": "old-b9544", "model": "qwen-3.5-high-ctx", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 747.7, "gen_n": 115, "tg_tps": 11.8, "wall_s": 28.4}
+{"label": "old-b9544", "model": "OmniCoder-9B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 500.8, "gen_n": 512, "tg_tps": 53.0, "wall_s": 9.8}
+{"label": "old-b9544", "model": "OmniCoder-9B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 508.2, "gen_n": 512, "tg_tps": 53.1, "wall_s": 9.8}
+{"label": "old-b9544", "model": "OmniCoder-9B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1593.9, "gen_n": 155, "tg_tps": 49.5, "wall_s": 11.9}
+{"label": "old-b9544", "model": "OmniCoder-9B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1592.3, "gen_n": 155, "tg_tps": 49.3, "wall_s": 11.9}
+{"label": "old-b9544", "model": "qwen-3.6-27B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 17.3, "gen_n": 512, "tg_tps": 4.0, "wall_s": 129.2}
+{"label": "old-b9544", "model": "qwen-3.6-27B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 17.8, "gen_n": 512, "tg_tps": 4.4, "wall_s": 118.2}
+{"label": "old-b9544", "model": "qwen-3.6-27B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 172.6, "gen_n": 97, "tg_tps": 2.7, "wall_s": 116.6}
+{"label": "old-b9544", "model": "qwen-3.6-27B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 174.8, "gen_n": 97, "tg_tps": 2.6, "wall_s": 117.1}
+{"label": "old-b9544", "model": "qwen-3.6-35B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 44.6, "gen_n": 512, "tg_tps": 54.1, "wall_s": 10.5, "draft_accept": 0.79}
+{"label": "old-b9544", "model": "qwen-3.6-35B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 48.3, "gen_n": 512, "tg_tps": 54.5, "wall_s": 10.3, "draft_accept": 0.79}
+{"label": "old-b9544", "model": "qwen-3.6-35B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 230.7, "gen_n": 124, "tg_tps": 54.4, "wall_s": 62.9, "draft_accept": 0.69}
+{"label": "old-b9544", "model": "qwen-3.6-35B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 230.4, "gen_n": 124, "tg_tps": 52.6, "wall_s": 63.0, "draft_accept": 0.69}
+{"label": "new-b11382", "model": "qwen-3.5", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 524.9, "gen_n": 512, "tg_tps": 55.8, "wall_s": 9.3}
+{"label": "new-b11382", "model": "qwen-3.5", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 526.6, "gen_n": 512, "tg_tps": 55.7, "wall_s": 9.3}
+{"label": "new-b11382", "model": "qwen-3.5", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1624.9, "gen_n": 130, "tg_tps": 51.8, "wall_s": 11.1}
+{"label": "new-b11382", "model": "qwen-3.5", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1618.0, "gen_n": 130, "tg_tps": 51.8, "wall_s": 11.1}
+{"label": "new-b11382", "model": "qwen-3.5-high-ctx", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 100.6, "gen_n": 512, "tg_tps": 15.2, "wall_s": 34.0}
+{"label": "new-b11382", "model": "qwen-3.5-high-ctx", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 84.5, "gen_n": 512, "tg_tps": 12.1, "wall_s": 42.7}
+{"label": "new-b11382", "model": "qwen-3.5-high-ctx", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 687.9, "gen_n": 123, "tg_tps": 9.1, "wall_s": 33.8}
+{"label": "new-b11382", "model": "qwen-3.5-high-ctx", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 713.6, "gen_n": 123, "tg_tps": 10.6, "wall_s": 31.1}
+{"label": "new-b11382", "model": "OmniCoder-9B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 506.8, "gen_n": 512, "tg_tps": 52.1, "wall_s": 9.9}
+{"label": "new-b11382", "model": "OmniCoder-9B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 498.1, "gen_n": 512, "tg_tps": 51.9, "wall_s": 10.0}
+{"label": "new-b11382", "model": "OmniCoder-9B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1536.1, "gen_n": 142, "tg_tps": 48.2, "wall_s": 12.1}
+{"label": "new-b11382", "model": "OmniCoder-9B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1530.7, "gen_n": 142, "tg_tps": 48.3, "wall_s": 12.1}
+{"label": "new-b11382", "model": "qwen-3.6-35B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 25.1, "gen_n": 512, "tg_tps": 25.7, "wall_s": 21.6, "draft_accept": 0.68}
+{"label": "new-b11382", "model": "qwen-3.6-35B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 48.7, "gen_n": 512, "tg_tps": 31.3, "wall_s": 17.3, "draft_accept": 0.68}
+{"label": "new-b11382", "model": "qwen-3.6-35B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 232.0, "gen_n": 97, "tg_tps": 19.7, "wall_s": 65.1, "draft_accept": 0.5}
+{"label": "new-b11382", "model": "qwen-3.6-35B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 232.1, "gen_n": 97, "tg_tps": 19.0, "wall_s": 65.3, "draft_accept": 0.5}
+{"label": "new-b11382", "model": "qwen-3.6-27B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 10.5, "gen_n": 512, "tg_tps": 3.0, "wall_s": 172.7}
+{"label": "new-b11382", "model": "qwen-3.6-27B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 16.2, "gen_n": 512, "tg_tps": 4.6, "wall_s": 114.9}
+{"label": "new-b11382", "model": "qwen-3.6-27B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 164.0, "gen_n": 114, "tg_tps": 2.2, "wall_s": 137.1}
+{"label": "new-b11382", "model": "qwen-3.6-27B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 162.7, "gen_n": 114, "tg_tps": 2.3, "wall_s": 135.1}
+{"label": "ab35-old-nommap-mtp", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 44.6, "gen_n": 512, "tg_tps": 50.3, "wall_s": 11.2, "draft_accept": 0.79}
+{"label": "ab35-old-nommap-mtp", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 47.5, "gen_n": 512, "tg_tps": 48.6, "wall_s": 11.5, "draft_accept": 0.79}
+{"label": "ab35-new-none-mtp", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 46.7, "gen_n": 512, "tg_tps": 47.4, "wall_s": 11.7, "draft_accept": 0.68}
+{"label": "ab35-new-none-mtp", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 48.5, "gen_n": 512, "tg_tps": 33.4, "wall_s": 16.2, "draft_accept": 0.68}
+{"label": "ab35-new-mmap-mtp", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 43.5, "gen_n": 512, "tg_tps": 34.6, "wall_s": 15.8, "draft_accept": 0.68}
+{"label": "ab35-new-mmap-mtp", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 43.6, "gen_n": 512, "tg_tps": 45.0, "wall_s": 12.4, "draft_accept": 0.68}
+{"label": "ab35-old-nommap-nomtp", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 46.6, "gen_n": 512, "tg_tps": 35.4, "wall_s": 15.4}
+{"label": "ab35-old-nommap-nomtp", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 49.8, "gen_n": 512, "tg_tps": 38.4, "wall_s": 14.2}
+{"label": "ab35-new-none-nomtp", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 48.9, "gen_n": 512, "tg_tps": 36.6, "wall_s": 14.9}
+{"label": "ab35-new-none-nomtp", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 49.4, "gen_n": 512, "tg_tps": 39.4, "wall_s": 13.9}
+{"label": "new-b11382-recheck", "model": "qwen-3.6-35B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 28.9, "gen_n": 512, "tg_tps": 48.9, "wall_s": 11.9, "draft_accept": 0.68}
+{"label": "new-b11382-recheck", "model": "qwen-3.6-35B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 48.4, "gen_n": 512, "tg_tps": 55.9, "wall_s": 10.1, "draft_accept": 0.68}
+{"label": "ab27-old", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 18.6, "gen_n": 512, "tg_tps": 4.1, "wall_s": 128.5}
+{"label": "ab27-new", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 17.8, "gen_n": 512, "tg_tps": 2.5, "wall_s": 206.6}
+{"label": "ab27-new-none", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 17.7, "gen_n": 512, "tg_tps": 3.2, "wall_s": 163.9}
+{"label": "ab27-new-t6", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 19.3, "gen_n": 512, "tg_tps": 5.4, "wall_s": 97.7}
+{"label": "s2-9-n0-current", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 524.0, "gen_n": 512, "tg_tps": 54.8, "wall_s": 9.5}
+{"label": "s2-9-n0-current", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1603.5, "gen_n": 130, "tg_tps": 51.2, "wall_s": 11.3}
+{"label": "s2-9-n1-262k-q8", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 524.4, "gen_n": 512, "tg_tps": 54.3, "wall_s": 9.5}
+{"label": "s2-9-n1-262k-q8", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1559.7, "gen_n": 113, "tg_tps": 48.9, "wall_s": 11.3}
+{"label": "s2-35-c0-moe32", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 39.6, "gen_n": 512, "tg_tps": 30.2, "wall_s": 18.0, "draft_accept": 0.71}
+{"label": "s2-35-c0-moe32", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 220.9, "gen_n": 107, "tg_tps": 44.7, "wall_s": 65.7, "draft_accept": 0.53}
+{"label": "s2-35-c2-fit-q8", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 27.4, "gen_n": 512, "tg_tps": 35.8, "wall_s": 15.8, "draft_accept": 0.81}
+{"label": "s2-35-c2-fit-q8", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 251.8, "gen_n": 126, "tg_tps": 41.8, "wall_s": 58.6, "draft_accept": 0.55}
+{"label": "s2-35-c3-fit-q8-ub2048", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 26.0, "gen_n": 512, "tg_tps": 17.1, "wall_s": 31.5, "draft_accept": 0.75}
+{"label": "s2-35-c3-fit-q8-ub2048", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 609.6, "gen_n": 127, "tg_tps": 6.1, "wall_s": 43.8, "draft_accept": 0.64}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 43.5, "gen_n": 512, "tg_tps": 33.4, "wall_s": 16.3, "draft_accept": 0.68}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 45.1, "gen_n": 512, "tg_tps": 30.6, "wall_s": 17.7, "draft_accept": 0.68}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 48.2, "gen_n": 512, "tg_tps": 31.6, "wall_s": 17.0, "draft_accept": 0.68}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 231.6, "gen_n": 97, "tg_tps": 21.8, "wall_s": 64.7, "draft_accept": 0.5}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 230.2, "gen_n": 97, "tg_tps": 29.9, "wall_s": 63.9, "draft_accept": 0.5}
+{"label": "s2-35-A-orig-t12", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 231.0, "gen_n": 97, "tg_tps": 36.9, "wall_s": 63.1, "draft_accept": 0.5}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 29.5, "gen_n": 512, "tg_tps": 23.6, "wall_s": 23.1, "draft_accept": 0.68}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 48.6, "gen_n": 512, "tg_tps": 57.2, "wall_s": 9.8, "draft_accept": 0.68}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 48.4, "gen_n": 512, "tg_tps": 53.9, "wall_s": 10.3, "draft_accept": 0.68}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 228.9, "gen_n": 97, "tg_tps": 35.6, "wall_s": 63.7, "draft_accept": 0.5}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 231.2, "gen_n": 97, "tg_tps": 38.3, "wall_s": 62.9, "draft_accept": 0.5}
+{"label": "s2-35-B-orig-t6", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 231.4, "gen_n": 97, "tg_tps": 30.8, "wall_s": 63.5, "draft_accept": 0.5}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 25.5, "gen_n": 512, "tg_tps": 30.2, "wall_s": 18.6, "draft_accept": 0.77}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 46.2, "gen_n": 512, "tg_tps": 51.9, "wall_s": 10.8, "draft_accept": 0.77}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 44.1, "gen_n": 512, "tg_tps": 43.2, "wall_s": 12.8, "draft_accept": 0.77}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 373.4, "gen_n": 122, "tg_tps": 33.3, "wall_s": 41.1, "draft_accept": 0.52}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 373.6, "gen_n": 122, "tg_tps": 35.7, "wall_s": 40.8, "draft_accept": 0.52}
+{"label": "s2-35-C-q8-ub1024", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 371.8, "gen_n": 122, "tg_tps": 37.6, "wall_s": 40.8, "draft_accept": 0.52}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.8, "gen_n": 512, "tg_tps": 10.9, "wall_s": 48.7, "draft_accept": 0.72}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 42.4, "gen_n": 512, "tg_tps": 47.5, "wall_s": 11.8, "draft_accept": 0.72}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 43.6, "gen_n": 512, "tg_tps": 51.4, "wall_s": 10.9, "draft_accept": 0.72}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 585.4, "gen_n": 109, "tg_tps": 36.2, "wall_s": 26.9, "draft_accept": 0.73}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 578.5, "gen_n": 109, "tg_tps": 15.7, "wall_s": 31.0, "draft_accept": 0.73}
+{"label": "s2-35-D-q8-ub2048", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 587.0, "gen_n": 109, "tg_tps": 47.9, "wall_s": 26.1, "draft_accept": 0.73}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 25.5, "gen_n": 512, "tg_tps": 23.7, "wall_s": 23.3, "draft_accept": 0.79}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 43.5, "gen_n": 512, "tg_tps": 61.3, "wall_s": 9.3, "draft_accept": 0.78}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 44.9, "gen_n": 512, "tg_tps": 62.0, "wall_s": 9.2, "draft_accept": 0.78}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 598.3, "gen_n": 108, "tg_tps": 50.0, "wall_s": 25.5, "draft_accept": 0.75}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 578.9, "gen_n": 108, "tg_tps": 6.7, "wall_s": 40.1, "draft_accept": 0.75}
+{"label": "s2-35-D-moe33", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 599.1, "gen_n": 108, "tg_tps": 54.5, "wall_s": 25.3, "draft_accept": 0.75}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 26.2, "gen_n": 512, "tg_tps": 21.6, "wall_s": 25.3, "draft_accept": 0.77}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 45.4, "gen_n": 512, "tg_tps": 47.9, "wall_s": 11.6, "draft_accept": 0.77}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 45.5, "gen_n": 512, "tg_tps": 49.9, "wall_s": 11.1, "draft_accept": 0.77}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 604.8, "gen_n": 108, "tg_tps": 45.6, "wall_s": 25.5, "draft_accept": 0.66}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 609.0, "gen_n": 108, "tg_tps": 41.7, "wall_s": 25.5, "draft_accept": 0.66}
+{"label": "s2-35-D-moe32", "model": "ab", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 603.2, "gen_n": 108, "tg_tps": 43.7, "wall_s": 25.6, "draft_accept": 0.66}
+{"label": "step2-final", "model": "qwen-3.5", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 532.2, "gen_n": 512, "tg_tps": 55.0, "wall_s": 9.4}
+{"label": "step2-final", "model": "qwen-3.5", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 502.7, "gen_n": 512, "tg_tps": 52.8, "wall_s": 9.8}
+{"label": "step2-final", "model": "qwen-3.5", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 544.6, "gen_n": 512, "tg_tps": 53.0, "wall_s": 9.7}
+{"label": "step2-final", "model": "qwen-3.5", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1562.0, "gen_n": 113, "tg_tps": 48.1, "wall_s": 11.3}
+{"label": "step2-final", "model": "qwen-3.5", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1560.8, "gen_n": 113, "tg_tps": 48.5, "wall_s": 11.3}
+{"label": "step2-final", "model": "qwen-3.5", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 1565.3, "gen_n": 113, "tg_tps": 49.2, "wall_s": 11.2}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 532.6, "gen_n": 512, "tg_tps": 54.9, "wall_s": 9.4}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 530.6, "gen_n": 512, "tg_tps": 55.2, "wall_s": 9.3}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 543.8, "gen_n": 512, "tg_tps": 53.9, "wall_s": 9.6}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1552.3, "gen_n": 113, "tg_tps": 48.9, "wall_s": 11.4}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1552.7, "gen_n": 113, "tg_tps": 48.7, "wall_s": 11.3}
+{"label": "step2-final", "model": "qwen-3.5-high-ctx", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 1552.6, "gen_n": 113, "tg_tps": 48.7, "wall_s": 11.3}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 514.2, "gen_n": 512, "tg_tps": 52.6, "wall_s": 9.8}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 498.5, "gen_n": 512, "tg_tps": 52.5, "wall_s": 9.9}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 524.2, "gen_n": 512, "tg_tps": 52.6, "wall_s": 9.8}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 1543.6, "gen_n": 127, "tg_tps": 48.1, "wall_s": 11.7}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 1540.5, "gen_n": 127, "tg_tps": 48.0, "wall_s": 11.7}
+{"label": "step2-final", "model": "OmniCoder-9B", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 1540.4, "gen_n": 127, "tg_tps": 47.8, "wall_s": 11.7}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 41.4, "gen_n": 512, "tg_tps": 46.4, "wall_s": 12.1, "draft_accept": 0.79}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 43.9, "gen_n": 512, "tg_tps": 50.6, "wall_s": 11.1, "draft_accept": 0.78}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 43.5, "gen_n": 512, "tg_tps": 40.9, "wall_s": 13.4, "draft_accept": 0.78}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 594.4, "gen_n": 108, "tg_tps": 31.1, "wall_s": 27.0, "draft_accept": 0.75}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 597.2, "gen_n": 108, "tg_tps": 56.8, "wall_s": 25.3, "draft_accept": 0.75}
+{"label": "step2-final", "model": "qwen-3.6-35B", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 600.2, "gen_n": 108, "tg_tps": 58.3, "wall_s": 25.1, "draft_accept": 0.75}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 18.2, "gen_n": 512, "tg_tps": 5.5, "wall_s": 95.6}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 19.0, "gen_n": 512, "tg_tps": 5.6, "wall_s": 93.7}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "short", "run": 2, "prompt_n": 41, "pp_tps": 18.9, "gen_n": 512, "tg_tps": 5.6, "wall_s": 94.0}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 175.6, "gen_n": 114, "tg_tps": 3.2, "wall_s": 114.7}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 178.0, "gen_n": 114, "tg_tps": 3.2, "wall_s": 113.3}
+{"label": "step2-final", "model": "qwen-3.6-27B", "test": "long", "run": 2, "prompt_n": 13970, "pp_tps": 177.0, "gen_n": 114, "tg_tps": 3.3, "wall_s": 113.3}
+{"label": "s3-ctx64k-q8-ub512-ffn58", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 20.6, "gen_n": 512, "tg_tps": 7.0, "wall_s": 74.8, "draft_accept": 0.88}
+{"label": "s3-ctx64k-q8-ub512-ffn58", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 20.8, "gen_n": 512, "tg_tps": 7.0, "wall_s": 74.8, "draft_accept": 0.88}
+{"label": "s3-ctx64k-q8-ub512-ffn58", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 224.8, "gen_n": 157, "tg_tps": 5.8, "wall_s": 89.0, "draft_accept": 0.66}
+{"label": "s3-ctx64k-q8-ub512-ffn58", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 224.4, "gen_n": 157, "tg_tps": 5.8, "wall_s": 89.0, "draft_accept": 0.66}
+{"label": "s3-ctx64k-q4-ub256-ffn48", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.6, "gen_n": 512, "tg_tps": 7.2, "wall_s": 72.8, "draft_accept": 0.91}
+{"label": "s3-ctx64k-q4-ub256-ffn48", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 23.9, "gen_n": 512, "tg_tps": 7.0, "wall_s": 74.7, "draft_accept": 0.91}
+{"label": "s3-ctx64k-q4-ub256-ffn48", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 166.1, "gen_n": 153, "tg_tps": 6.6, "wall_s": 107.1, "draft_accept": 0.77}
+{"label": "s3-ctx64k-q4-ub256-ffn48", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 165.7, "gen_n": 153, "tg_tps": 6.7, "wall_s": 107.1, "draft_accept": 0.77}
+{"label": "s3-ctx96k-q4-ub128-ffn54", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 21.8, "gen_n": 512, "tg_tps": 6.6, "wall_s": 79.0, "draft_accept": 0.9}
+{"label": "s3-ctx96k-q4-ub128-ffn54", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 22.0, "gen_n": 512, "tg_tps": 6.7, "wall_s": 78.8, "draft_accept": 0.9}
+{"label": "s3-ctx96k-q4-ub128-ffn54", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 90.1, "gen_n": 151, "tg_tps": 6.0, "wall_s": 180.1, "draft_accept": 0.75}
+{"label": "s3-ctx96k-q4-ub128-ffn54", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 89.5, "gen_n": 151, "tg_tps": 5.4, "wall_s": 184.1, "draft_accept": 0.75}
+{"label": "s3-ctx32k-q8-ub512-ffn46", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 24.6, "gen_n": 512, "tg_tps": 7.5, "wall_s": 70.0, "draft_accept": 0.87}
+{"label": "s3-ctx32k-q8-ub512-ffn46", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 25.5, "gen_n": 512, "tg_tps": 6.6, "wall_s": 78.8, "draft_accept": 0.87}
+{"label": "s3-ctx32k-q8-ub512-ffn46", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 251.8, "gen_n": 159, "tg_tps": 6.1, "wall_s": 81.2, "draft_accept": 0.64}
+{"label": "s3-ctx32k-q8-ub512-ffn46", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 252.5, "gen_n": 159, "tg_tps": 5.5, "wall_s": 84.1, "draft_accept": 0.64}
+{"label": "s3-ctx64k-q4-otd-ffn48", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.9, "gen_n": 512, "tg_tps": 7.5, "wall_s": 69.8, "draft_accept": 0.91}
+{"label": "s3-ctx64k-q4-otd-ffn48", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 24.8, "gen_n": 512, "tg_tps": 7.6, "wall_s": 69.3, "draft_accept": 0.91}
+{"label": "s3-ctx64k-q4-otd-ffn48", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 166.0, "gen_n": 153, "tg_tps": 6.5, "wall_s": 107.6, "draft_accept": 0.77}
+{"label": "s3-ctx64k-q4-otd-ffn48", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 166.9, "gen_n": 153, "tg_tps": 7.2, "wall_s": 104.8, "draft_accept": 0.77}
+{"label": "s3-ctx64k-q4-otd-n3-ffn50", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.2, "gen_n": 512, "tg_tps": 6.9, "wall_s": 76.4, "draft_accept": 0.85}
+{"label": "s3-ctx64k-q4-otd-n3-ffn50", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 23.8, "gen_n": 512, "tg_tps": 7.0, "wall_s": 75.1, "draft_accept": 0.85}
+{"label": "s3-ctx64k-q4-otd-n3-ffn50", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 161.3, "gen_n": 153, "tg_tps": 5.5, "wall_s": 114.1, "draft_accept": 0.59}
+{"label": "s3-ctx64k-q4-otd-n3-ffn50", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 161.2, "gen_n": 153, "tg_tps": 5.5, "wall_s": 114.3, "draft_accept": 0.59}
+{"label": "step3-final", "model": "qwen-3.8-27B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.3, "gen_n": 512, "tg_tps": 7.1, "wall_s": 73.4, "draft_accept": 0.89}
+{"label": "step3-final", "model": "qwen-3.8-27B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 23.7, "gen_n": 512, "tg_tps": 7.1, "wall_s": 74.1, "draft_accept": 0.89}
+{"label": "step3-final", "model": "qwen-3.8-27B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 162.2, "gen_n": 153, "tg_tps": 6.1, "wall_s": 111.0, "draft_accept": 0.73}
+{"label": "step3-final", "model": "qwen-3.8-27B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 161.1, "gen_n": 153, "tg_tps": 6.1, "wall_s": 111.6, "draft_accept": 0.73}
+{"label": "step3-q8kv", "model": "qwen-3.8-27B", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 20.4, "gen_n": 512, "tg_tps": 6.9, "wall_s": 76.5, "draft_accept": 0.88}
+{"label": "step3-q8kv", "model": "qwen-3.8-27B", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 21.3, "gen_n": 512, "tg_tps": 7.0, "wall_s": 75.3, "draft_accept": 0.88}
+{"label": "step3-q8kv", "model": "qwen-3.8-27B", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 145.4, "gen_n": 157, "tg_tps": 6.0, "wall_s": 122.1, "draft_accept": 0.74}
+{"label": "step3-q8kv", "model": "qwen-3.8-27B", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 145.5, "gen_n": 157, "tg_tps": 6.2, "wall_s": 121.3, "draft_accept": 0.74}
+{"label": "s3long-mtp-ffn56", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 16.9, "gen_n": 512, "tg_tps": 5.1, "wall_s": 101.9, "draft_accept": 0.84}
+{"label": "s3long-mtp-ffn56", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 113.8, "gen_n": 162, "tg_tps": 3.7, "wall_s": 166.1, "draft_accept": 0.72}
+{"label": "s3long-mtp-ffn56", "model": "ab", "test": "deep56k", "run": 0, "prompt_n": 54953, "pp_tps": 105.1, "gen_n": 128, "tg_tps": 2.6, "wall_s": 572.5, "draft_accept": 0.65}
+{"label": "s3long-nomtp-ffn36", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 26.9, "gen_n": 512, "tg_tps": 5.2, "wall_s": 99.5}
+{"label": "s3long-nomtp-ffn40", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 23.2, "gen_n": 512, "tg_tps": 5.0, "wall_s": 103.5}
+{"label": "s3long-nomtp-ffn40", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 159.6, "gen_n": 163, "tg_tps": 3.6, "wall_s": 132.4}
+{"label": "s3long-nomtp-ffn40", "model": "ab", "test": "deep56k", "run": 0, "prompt_n": 54953, "pp_tps": 142.1, "gen_n": 128, "tg_tps": 2.0, "wall_s": 451.2}
+{"label": "step3-262k", "model": "qwen-3.8-27B-262k", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 22.1, "gen_n": 512, "tg_tps": 5.0, "wall_s": 103.3}
+{"label": "step3-262k", "model": "qwen-3.8-27B-262k", "test": "deep120k", "run": 0, "prompt_n": 119157, "pp_tps": 120.9, "gen_n": 128, "tg_tps": 1.1, "wall_s": 1096.8}

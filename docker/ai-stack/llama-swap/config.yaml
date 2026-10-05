@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mostlygeek/llama-swap/refs/heads/main/config-schema.json
+# Tuned for RTX 3060 12 GB + 30 GB RAM + Ryzen 5 8500G (6c/12t), llama.cpp b11382.
+# See PLAN.md for the benchmarks behind these flags.
+logLevel: info
+logToStdout: "both"
+
+# Starting port for model servers.
+startPort: 5800
+
+# Default unload after 5 minutes of inactivity; per-model ttl overrides it.
+globalTTL: 300
+
+macros:
+  # -t 6: 12 threads on 6 physical cores halves decode on this build
+  "server": >
+    /app/llama-server
+    --port ${PORT}
+    --host 0.0.0.0
+    --parallel 1
+    --jinja
+    -fa on
+    -t 6 -tb 12
+  # Qwen recommended sampling (thinking mode, the default); clients can still override per request
+  "qwen-sampling": >
+    --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 0.0
+
+models:
+  # Qwen3.5 is hybrid (KV on 1/4 of layers): full 262K ctx fits on GPU with q8_0 KV.
+  # Replaces the old qwen-3.5 + qwen-3.5-high-ctx entries.
+  "qwen-3.5":
+    aliases: ["qwen-3.5-high-ctx"]
+    proxy: "http://127.0.0.1:${PORT}"
+    cmd: >
+      ${server} ${qwen-sampling}
+      -m /models/Qwen3.5-9B-Q4_K_M.gguf
+      --ctx-size 262144
+      -ngl 99
+      -ctk q8_0 -ctv q8_0
+
+  # Dense 27B: all layers on GPU, FFN of the first 58 of 64 layers on CPU (RAM-bandwidth bound, ~6-7 tok/s).
+  # Big KV (4x256 KV heads, ~34 KB/token at q8_0). q8_0 KV: q4_0 fits more on GPU but degrades long-context quality. MTP drafter is a separate GGUF; its token_embd stays on CPU.
+  "qwen-3.8-27B":
+    aliases: ["qwen-3.6-27B"]
+    ttl: 600
+    proxy: "http://127.0.0.1:${PORT}"
+    cmd: >
+      ${server} ${qwen-sampling}
+      -m /models/Qwen3.8-27B-UD-Q4_K_S.gguf
+      --model-draft /models/MTP/mtp-Qwen3.8-27B-Q4_0.gguf
+      --spec-type draft-mtp --spec-draft-n-max 2
+      --ctx-size 65536
+      -ngl 99
+      --n-cpu-ffn 58
+      -b 512 -ub 256
+      -ctk q8_0 -ctv q8_0
+      -ctkd q8_0 -ctvd q8_0
+      -otd "token_embd\.weight=CPU"
+
+  # Slow long-context option: full 262K ctx with the KV cache (8.7 GB at q8_0) in system RAM (-nkvo).
+  # No MTP: its draft context needs its own ~1.7 GB GPU compute buffer at 262K; without it 24 FFN layers
+  # fit on GPU instead of 8 -> ~40% faster prompt processing. ~5 tok/s short, ~2 tok/s at 55K depth.
+  "qwen-3.8-27B-262k":
+    ttl: 600
+    proxy: "http://127.0.0.1:${PORT}"
+    cmd: >
+      ${server} ${qwen-sampling}
+      -m /models/Qwen3.8-27B-UD-Q4_K_S.gguf
+      --ctx-size 262144
+      --no-kv-offload
+      -ngl 99
+      --n-cpu-ffn 40
+      -b 512 -ub 256
+      -ctk q8_0 -ctv q8_0
+      --cache-ram 2048
+    timeouts:
+      responseHeader: 0      # long prompts take many minutes before the first token
+
+  # MoE: experts of the first 33 layers on CPU, rest on GPU (peak ~11.1 GB VRAM).
+  # -ub 2048 gives ~2.5x prompt processing; q8_0 KV (main + MTP draft) pays for the bigger compute buffer.
+  "qwen-3.6-35B":
+    ttl: 900
+    proxy: "http://127.0.0.1:${PORT}"
+    cmd: >
+      ${server} ${qwen-sampling}
+      -m /models/Qwen3.6-35B-MTP-A3B-UD-Q4_K_XL.gguf
+      --ctx-size 131072
+      -ngl 999
+      --n-cpu-moe 33
+      -b 2048 -ub 2048
+      -ctk q8_0 -ctv q8_0
+      -ctkd q8_0 -ctvd q8_0
+      --spec-type draft-mtp --spec-draft-n-max 3
+      --load-mode none
+      --cache-ram 2048
+    #  --mmproj /models/mmproj-F16.gguf
+    timeouts:
+      connect: 30
+      keepalive: 30
+      responseHeader: 0      # 0 = no timeout (recommended for large prompts)
+      tlsHandshake: 10
+      idleConn: 90

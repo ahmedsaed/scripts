@@ -1,0 +1,16 @@
+services:
+  llama-swap:
+    image: ghcr.io/mostlygeek/llama-swap:v262-cuda-b11382
+    container_name: llama-swap
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/apps/llama_cpp/models:/models
+      - ./config.yaml:/app/config.yaml
+      - ./cache:/prompt_cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    restart: unless-stopped
