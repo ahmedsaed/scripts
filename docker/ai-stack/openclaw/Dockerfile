@@ -58,6 +58,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     && rm -rf /var/lib/apt/lists/*
 
+# ── GitHub CLI (gh) ──────────────────────────────────────────────
+# Debian bookworm has no `gh` package, so add GitHub's official apt repo.
+# Needed so the agent can authenticate a managed GitHub identity and open
+# pull requests directly instead of relying on a hand-rolled API wrapper.
+# `gh --version` verifies the install at build time (a broken install fails
+# the build rather than surfacing later at runtime).
+RUN mkdir -p -m 755 /etc/apt/keyrings \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+         -o /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+         > /etc/apt/sources.list.d/github-cli.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends gh \
+    && gh --version \
+    && rm -rf /var/lib/apt/lists/*
+
 # ── GPU access: render group for Vulkan ─────────────────────────
 # Build with: docker build --build-arg RENDER_GID=$(getent group render | cut -d: -f3) .
 ARG RENDER_GID=107
