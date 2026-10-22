@@ -8,3 +8,18 @@ services:
       - ${HOME}/apps/adguard/opt/adguardhome/work:/opt/adguardhome/work
       - ${HOME}/apps/adguard/opt/adguardhome/conf:/opt/adguardhome/conf
     network_mode: host
+
+  adguardhome-sync:
+    image: ghcr.io/bakito/adguardhome-sync
+    container_name: adguardhome-sync
+    command: run --config /config/adguardhome-sync.yaml
+    volumes:
+      - ${HOME}/apps/adguardhome-sync/config/adguardhome-sync.yaml:/config/adguardhome-sync.yaml
+    ports:
+      - 8084:8084
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: main
