@@ -1,0 +1,23 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ${HOME}/apps/tailscale/data:/var/lib/tailscale
+    environment:
+      TS_HOSTNAME: ${TS_HOSTNAME}
+      TS_AUTHKEY: ${TS_AUTHKEY} # empty: log in from the URL in `docker logs tailscale`
+      TS_STATE_DIR: /var/lib/tailscale
+      TS_USERSPACE: "false" # real tailscale0 interface, so the host can reach 100.x
+      TS_DEBUG_FIREWALL_MODE: iptables # kernels without nf_tables (Samsung A51)
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"

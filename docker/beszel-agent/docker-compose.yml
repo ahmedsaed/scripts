@@ -1,0 +1,18 @@
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ${HOME}/apps/beszel-agent/data:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LISTEN: 45876
+      KEY: ${KEY}
+      TOKEN: ${TOKEN}
+      HUB_URL: ${HUB_URL}
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
