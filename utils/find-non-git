@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+
+# folders we don't want to waste time on
+SKIP_DIRS = {'node_modules', '__pycache__', '.venv', '.idea', '.git', '.tox', 'dist', 'build', '.cache'}
+
+def has_git_repo_with_remote(path):
+    """Check if a directory is a git repo AND has a remote"""
+    git_dir = os.path.join(path, '.git')
+    if not os.path.isdir(git_dir):
+        return False
+    try:
+        # Check if it has at least one remote
+        output = subprocess.check_output(['git', '-C', path, 'remote'], stderr=subprocess.DEVNULL)
+        return bool(output.strip())
+    except subprocess.CalledProcessError:
+        return False
+
+def is_git_repo(path):
+    """Check if a directory is a git repo at all (even without a remote)"""
+    return os.path.isdir(os.path.join(path, '.git'))
+
+def find_backup_targets(path):
+    """Main function that traverses and finds top-level non-git-repo projects"""
+    # Absolute safety net
+    if not os.path.isdir(path):
+        return
+
+    for root, dirs, files in os.walk(path):
+        # Clean up the mess before proceeding
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
+
+        # If this dir has a git repo with remote, skip the whole subtree
+        if has_git_repo_with_remote(root):
+            dirs.clear()  # Stop descending into this subtree
+            continue
+
+        # Check if any child has a git repo (with or without remote)
+        has_child_git = any(is_git_repo(os.path.join(root, d)) for d in dirs)
+
+        # If this folder itself is a git repo with NO remote, keep going deeper
+        if is_git_repo(root) and not has_git_repo_with_remote(root):
+            continue  # Maybe its children are cleaner
+
+        # If none of the children have a repo and this one doesn’t either, print it
+        if not is_git_repo(root) and not has_child_git:
+            print(root)
+            dirs.clear()  # Don't bother going deeper
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python find_non_git_projects.py <path>")
+        sys.exit(1)
+    start_path = sys.argv[1]
+    find_backup_targets(start_path)
