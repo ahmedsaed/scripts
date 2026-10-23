@@ -1,0 +1,24 @@
+services:
+  adguardhome-sync:
+    image: ghcr.io/bakito/adguardhome-sync:latest
+    container_name: adguardhome-sync
+    restart: unless-stopped
+    network_mode: host # reaches the local replica on 127.0.0.1
+    command: run # settings come from the environment, not a config file
+    environment:
+      ORIGIN_URL: ${ORIGIN_URL}
+      ORIGIN_USERNAME: ${ORIGIN_USERNAME}
+      ORIGIN_PASSWORD: ${ORIGIN_PASSWORD}
+      REPLICA1_URL: ${REPLICA1_URL}
+      REPLICA1_USERNAME: ${REPLICA1_USERNAME}
+      REPLICA1_PASSWORD: ${REPLICA1_PASSWORD}
+      CRON: "*/10 * * * *"
+      RUN_ON_START: "true"
+      API_PORT: 0 # no web UI
+      # A secondary DNS server must never hand out addresses
+      FEATURES_DHCP_SERVER_CONFIG: "false"
+      FEATURES_DHCP_STATIC_LEASES: "false"
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
