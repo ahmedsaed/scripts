@@ -1,0 +1,78 @@
+services:
+  frigate:
+    container_name: frigate
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate@sha256:d4351369984d4a9e2a49ac59736f6490856a7ea11f7790040746d21496967010
+    shm_size: "256mb"
+    networks:
+      - nginx-proxy
+      - frigate-net
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${HOME}/apps/frigate/config:/config
+      - ${HOME}/apps/frigate/storage:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 536870912
+    ports:
+      - "8971:8971"     # Auth Web UI
+      - "127.0.0.1:5000:5000"     # Web UI
+      - "8554:8554"     # RTSP restream
+      - "8555:8555/tcp" # WebRTC
+      - "8555:8555/udp"
+    environment:
+      TZ: Africa/Cairo
+      FRIGATE_RTSP_PASSWORD: ${FRIGATE_RTSP_PASSWORD}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    cap_add:
+      - CAP_PERFMON
+
+  frigate-notify:
+    container_name: frigate-notify
+    restart: unless-stopped
+    image: ghcr.io/0x2142/frigate-notify:latest
+    depends_on:
+      - frigate
+      - ntfy-gate
+    environment:
+      TZ: Africa/Cairo
+      FN_NTFY_TOKEN: ${FN_NTFY_TOKEN}
+    volumes:
+      - ./frigate-notify.yml:/app/config.yml
+    networks:
+      - frigate-net
+
+  # Throttles ntfy alerts per camera group: one alert, then silence for COOLDOWN seconds
+  ntfy-gate:
+    container_name: ntfy-gate
+    restart: unless-stopped
+    image: python:3.12-alpine
+    command: ["python", "-u", "/app/gate.py"]
+    environment:
+      TZ: Africa/Cairo
+      UPSTREAM: https://ntfy.server.ahmedsaed.me
+      COOLDOWN: "180"
+      CAMERA_GROUPS: "backyard=backyardSide,backyardCenter,backdoor;front=frontDoor"
+      # Camera / Frigate offline watcher
+      FRIGATE_URL: http://frigate:5000
+      NTFY_TOPIC: security
+      NTFY_TOKEN: ${FN_NTFY_TOKEN}
+      POLL_INTERVAL: "30"
+      OFFLINE_AFTER: "120"
+    volumes:
+      - ./ntfy-gate/gate.py:/app/gate.py:ro
+    networks:
+      - frigate-net
+
+networks:
+  frigate-net:
+  nginx-proxy:
+    external: true
+    name: nginx-proxy

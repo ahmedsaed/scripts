@@ -1,0 +1,40 @@
+app:
+  mode: events
+
+frigate:
+  server: http://frigate:5000
+  public_url: https://frigate.nova.ahmedsaed.me
+  startup_check:
+    attempts: 5
+    interval: 30
+  webapi:
+    enabled: true
+    interval: 15
+
+alerts:
+  general:
+    title: Frigate
+    nosnap: drop
+    snap_bbox: true
+    snap_timestamp: true
+    notify_once: true
+    max_snap_retry: 10
+  zones:
+    unzoned: allow
+  labels:
+    min_score: 0.7
+    allow:
+      - person
+
+  ntfy:
+    enabled: true
+    server: http://ntfy-gate:8080  # throttling proxy -> https://ntfy.server.ahmedsaed.me
+    topic: security
+    headers:
+      - X-Camera: "{{ .Camera }}"
+      - Authorization: "Bearer {{ env \"FN_NTFY_TOKEN\" }}"
+      - X-Tags: rotating_light
+      - X-Actions: "view, Open in Frigate, {{ .Extra.PublicURL }}/explore?event_id={{ .ID }}"
+    template: |
+      {{ .Label }} on {{ .Extra.CameraName }} at {{ .Extra.FormattedTime }}
+      Confidence: {{ .Extra.TopScorePercent }}
