@@ -1,3 +1,4 @@
 /tmp
 .env
 rally
+__pycache__/
