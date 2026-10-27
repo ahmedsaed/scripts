@@ -1,3 +1,6 @@
 [submodule "docker/winapps"]
 	path = docker/winapps
 	url = https://github.com/winapps-org/winapps.git
+[submodule "orcaslicer/profiles"]
+	path = orcaslicer/profiles
+	url = git@github.com:ahmedsaed/my-orca-profiles.git
