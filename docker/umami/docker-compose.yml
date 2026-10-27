@@ -1,0 +1,44 @@
+# Cookieless page-view analytics for the merope.dev sites.
+# Served at https://stats.merope.dev via nginx-proxy-manager -> umami:3000 (no published port).
+services:
+  umami:
+    image: ghcr.io/umami-software/umami:3.4.1
+    container_name: umami
+    restart: unless-stopped
+    init: true
+    environment:
+      DATABASE_URL: postgresql://umami:${DB_PASSWORD}@umami-db:5432/umami
+      APP_SECRET: ${APP_SECRET}
+      TWO_FACTOR_ENCRYPTION_KEY: ${TWO_FACTOR_ENCRYPTION_KEY}
+      # Neutral script name so ad blockers don't drop it (sites load /p.js, not /script.js)
+      TRACKER_SCRIPT_NAME: p.js
+      DISABLE_TELEMETRY: 1
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://localhost:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  umami-db:
+    image: postgres:16-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - /home/ahmed/apps/umami/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    external: true
+    name: main
