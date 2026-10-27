@@ -1,0 +1,14 @@
+# Point to your actual file path
+FROM /llama_cpp/models/Qwen3.6-27B-Q4_K_M.gguf
+
+# Matching your Docker '--n-gpu-layers 22'
+PARAMETER num_gpu 22
+
+# Matching your Docker '--ctx-size 162144'
+PARAMETER num_ctx 162144
+
+# Matching your Docker '--threads 12'
+PARAMETER num_thread 12
+
+# IMMEDIATELY free memory when not in use
+PARAMETER num_keep 0

@@ -1,0 +1,12 @@
+FROM /llama_cpp/models/Qwen3.5-9B-Q4_K_M.gguf
+
+# Set to exactly 30 layers as requested
+PARAMETER num_gpu 30
+
+# Maximize context to 262144 as requested
+PARAMETER num_ctx 262144
+
+PARAMETER num_thread 12
+
+# IMMEDIATELY free memory when not in use
+PARAMETER num_keep 0
