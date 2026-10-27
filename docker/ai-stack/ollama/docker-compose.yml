@@ -6,6 +6,16 @@ services:
       - "11434:11434"
     volumes:
       - ${HOME}/apps/ollama:/root/.ollama
+      - ${HOME}/apps/llama_cpp:/llama_cpp
+      - ./custom_models:/custom_models
+    environment:
+      - OLLAMA_NUM_PARALLEL=1
+      - OLLAMA_MAX_LOADED_MODELS=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
     restart: unless-stopped
 
   open-webui:

@@ -64,6 +64,7 @@ Qwen3.8-Flash-Next (smallest quant 72 GB), GLM-5.3-Flash (93 GB+), DeepSeek V4 F
 - [x] 2. Quick wins — config written, validated through llama-swap (see Step 2 final)
 - [x] 3. Qwen3.8-27B + `--n-cpu-ffn` + MTP — done, old Qwen3.6-27B and OmniCoder deleted (see Step 3 results)
 - [x] 3b. `qwen-3.8-27B-262k`: slow long-context entry with KV in system RAM
+- [ ] 4. ISTA-DASLab GSQ-RCO IQ2_XS (2-bit) 27B: `qwen-3.8-27B-iq2` added, pending real-workflow testing (see Step 4)
 - [x] Cleanup: old llama-swap images (v206/v208/b9544) and the stale `ai-stack/llama_cpp/` compose removed
 - [-] 4. ~~Gemma 4 12B + draft model~~ — skipped (128K ctx, weaker tool use; not practical here). Keep Qwen3.5-9B as the small 262K model; delete OmniCoder.
 - [ ] 5. (Optional) Gemma 4 26B-A4B vs 35B-A3B
@@ -174,6 +175,56 @@ Chosen: no MTP, `--n-cpu-ffn 40`, `--cache-ram 2048`, `timeouts.responseHeader: 
 Validated through llama-swap: short tg 5.0; **119K-token prompt: pp 121 tok/s (~16.5 min prefill), tg 1.1 tok/s, 18 min total.** Works, but it's a "start it and walk away" option; in agent sessions the prompt cache means only new tokens are processed each turn. RAM use is high (KV 8.7 GB + CPU FFN), swap reached 6 GB with desktop apps open.
 
 Ideas not tried: IQ4_XS (14.25 GB, −1.1 GB → ~6 more FFN layers on GPU, maybe +10%); moving the desktop to the iGPU (+~0.8 GB VRAM).
+
+### Step 4: ISTA-DASLab GSQ-RCO IQ2_XS (2.5 bpw) 27B
+
+File: `ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF` → `Qwen3.8-27B-GSQ-RCO-IQ2_XS-mtp.gguf` (8.77 GB, MTP head embedded: `--spec-type draft-mtp` with no `--model-draft`). Their card claims IQ2_XS ≈ BF16 on zero-shot avg, AIME25 96.7 vs 100, GPQA-D 84.9 vs 89.9, LCB v6 76.6 vs 85.7 (self-reported); IQ2_S (9.6 GB with MTP) is closer to BF16 but leaves less room for KV.
+
+VRAM at 64K: model 8.1 GB + KV 2.2 GB (q8_0) + recurrent state 0.45 GB (doubled by MTP rollback, `n_rs_seq = 2`) + compute 0.33 GB. With the desktop holding ~1.1 GB, all-GPU doesn't fit.
+
+Gotcha: a config that loads can still OOM on the **first request**: `cudaGraphInstantiate` needs ~0.5 GB free after load. Load-only checks (`tryload.sh`) aren't enough; the sweep sends real requests.
+
+Sweep (64K, `-b 512 -ub 256`, lowest `--n-cpu-ffn` that survives short+long requests, llama-server direct):
+
+| KV (K / V) | min ncffn | short tg | long pp / tg | MTP accept |
+|---|---|---|---|---|
+| q8_0 / q8_0 | 18 | 12.5 | 331 / 11.6 | 0.79 / 0.74 |
+| q8_0 / q4_0 | 10 | 17.6 | 369 / 14.6 | 0.80 / 0.63 |
+| q4_0 / q4_0 | 2 | **30.7** | **421 / 25.4** | 0.85 / 0.72 |
+
+Chosen, each at +2 ncffn headroom: `qwen-3.8-27B-iq2` (q8_0 KV, ncffn 20) and `qwen-3.8-27B-iq2-fast` (q4_0 KV, ncffn 4). `-iq2-fast` was later removed (q4_0 KV quality concern; same reasoning as step 3). Through llama-swap:
+
+| Entry | short tg | 14K pp / tg | 55K pp / tg | 55K wall |
+|---|---|---|---|---|
+| qwen-3.8-27B (Q4_K_S, step 3) | 7.0 | 145 / 6.1 | – | – |
+| qwen-3.8-27B-iq2 | 11.0 | 323 / 11.4 | 286 / 10.4 | 204 s |
+| qwen-3.8-27B-iq2-fast | 25.2 | 408 / 23.7 | 349 / 19.3 | 164 s |
+
+Sanity checks (arithmetic, bat-and-ball, `is_prime` executed against 17 primes, tool call, passphrase needle at ~3/5 depth of a ~50K-token prompt): all pass on iq2, iq2-fast and the Q4_K_S baseline. These are smoke tests, not a quality benchmark; real-workflow comparison pending.
+
+Follow-up: the 64K entry OOMed in real use (`cuMemCreate` in the CUDA pool mid-request; desktop had grown to ~1.25 GB). Peak VRAM with a prompt filling ~85% of ctx (ncffn 20, q8_0 KV):
+
+| ctx | server self | card total | result |
+|---|---|---|---|
+| 64K | 10.6 GB+ | 11.8 GB+ | OOM on 47K-token prompt |
+| 48K | 9.9 GB | 11.1 GB | ok, 40K prompt: pp 299 / tg 10.7 |
+| **40K** | **9.5 GB** | **10.8 GB** | ok, 33K prompt: pp 305 / tg 10.1 |
+| 32K | 9.1 GB | 10.4 GB | ok |
+
+Set `qwen-3.8-27B-iq2` to 40K so the card stays under 11 GB total.
+
+Revised cap: **the model** at most ~11 GB, leaving ~1.3 GB for the desktop (now 1.3–1.5 GB). Full-GPU tests, server-only peak:
+
+| Setup | ctx | ncffn | self peak | short tg | near-full pp / tg |
+|---|---|---|---|---|---|
+| no MTP | 64K | 0 | – | load fails | |
+| no MTP | 56K | 0 | – | OOM on request | |
+| **no MTP** | **48K** | **0** | **10.2 GB** | **21.5** | **400 / 16.2** (40K prompt) |
+| MTP | 32K | 0 | – | OOM on request | |
+| MTP | 32K | 4 | 10.2 GB | 21.4 | 378 / 20.8 (27K prompt) |
+| MTP | 32K | 8 | 10.0 GB | 17.5 | 361 / 16.7 |
+
+MTP costs ~0.8 GB VRAM (recurrent state doubled for rollback + draft buffers), roughly cancelling its decode gain here. Chosen: no MTP, 48K, fully on GPU. Without `--spec-type`, the MTP tensors in the `-mtp` GGUF aren't loaded to GPU (model buffer 7.76 vs 8.09 GB).
 
 ## Sources
 

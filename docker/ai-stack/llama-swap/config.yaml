@@ -75,6 +75,19 @@ models:
     timeouts:
       responseHeader: 0      # long prompts take many minutes before the first token
 
+  # ISTA-DASLab GSQ-RCO IQ2_XS (2.5 bpw) fully on GPU, no MTP: peak ~10.2 GB, leaves ~1.3 GB for the desktop.
+  # MTP costs ~0.8 GB (recurrent state x2, draft buffers): at 32K it needs ncffn 4 for the same speed. 56K OOMs.
+  "qwen-3.8-27B-iq2":
+    ttl: 600
+    proxy: "http://127.0.0.1:${PORT}"
+    cmd: >
+      ${server} ${qwen-sampling}
+      -m /models/Qwen3.8-27B-GSQ-RCO-IQ2_XS-mtp.gguf
+      --ctx-size 49152
+      -ngl 99
+      -b 512 -ub 256
+      -ctk q8_0 -ctv q8_0
+
   # MoE: experts of the first 33 layers on CPU, rest on GPU (peak ~11.1 GB VRAM).
   # -ub 2048 gives ~2.5x prompt processing; q8_0 KV (main + MTP draft) pays for the bigger compute buffer.
   "qwen-3.6-35B":

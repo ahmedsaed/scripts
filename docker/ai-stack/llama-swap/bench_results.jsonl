@@ -171,3 +171,24 @@
 {"label": "s3long-nomtp-ffn40", "model": "ab", "test": "deep56k", "run": 0, "prompt_n": 54953, "pp_tps": 142.1, "gen_n": 128, "tg_tps": 2.0, "wall_s": 451.2}
 {"label": "step3-262k", "model": "qwen-3.8-27B-262k", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 22.1, "gen_n": 512, "tg_tps": 5.0, "wall_s": 103.3}
 {"label": "step3-262k", "model": "qwen-3.8-27B-262k", "test": "deep120k", "run": 0, "prompt_n": 119157, "pp_tps": 120.9, "gen_n": 128, "tg_tps": 1.1, "wall_s": 1096.8}
+{"label": "ista2xs-kv88-ffn18", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 59.6, "gen_n": 512, "tg_tps": 12.5, "wall_s": 41.7, "draft_accept": 0.79}
+{"label": "ista2xs-kv88-ffn18", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 59.6, "gen_n": 512, "tg_tps": 12.5, "wall_s": 41.8, "draft_accept": 0.79}
+{"label": "ista2xs-kv88-ffn18", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 331.0, "gen_n": 142, "tg_tps": 11.6, "wall_s": 54.3, "draft_accept": 0.74}
+{"label": "ista2xs-kv88-ffn18", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 330.8, "gen_n": 142, "tg_tps": 11.6, "wall_s": 54.4, "draft_accept": 0.74}
+{"label": "ista2xs-kv84-ffn10", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 75.1, "gen_n": 512, "tg_tps": 17.6, "wall_s": 29.8, "draft_accept": 0.8}
+{"label": "ista2xs-kv84-ffn10", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 79.6, "gen_n": 512, "tg_tps": 17.6, "wall_s": 29.8, "draft_accept": 0.79}
+{"label": "ista2xs-kv84-ffn10", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 369.2, "gen_n": 150, "tg_tps": 14.6, "wall_s": 48.0, "draft_accept": 0.63}
+{"label": "ista2xs-kv84-ffn10", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 368.9, "gen_n": 150, "tg_tps": 14.5, "wall_s": 48.2, "draft_accept": 0.63}
+{"label": "ista2xs-kv44-ffn2", "model": "ab", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 114.0, "gen_n": 512, "tg_tps": 30.7, "wall_s": 17.1, "draft_accept": 0.85}
+{"label": "ista2xs-kv44-ffn2", "model": "ab", "test": "short", "run": 1, "prompt_n": 41, "pp_tps": 118.4, "gen_n": 512, "tg_tps": 30.6, "wall_s": 17.2, "draft_accept": 0.85}
+{"label": "ista2xs-kv44-ffn2", "model": "ab", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 421.4, "gen_n": 143, "tg_tps": 25.5, "wall_s": 38.7, "draft_accept": 0.72}
+{"label": "ista2xs-kv44-ffn2", "model": "ab", "test": "long", "run": 1, "prompt_n": 13970, "pp_tps": 420.2, "gen_n": 143, "tg_tps": 25.2, "wall_s": 38.9, "draft_accept": 0.72}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 56.3, "gen_n": 512, "tg_tps": 11.0, "wall_s": 47.3, "draft_accept": 0.74}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 322.7, "gen_n": 148, "tg_tps": 11.4, "wall_s": 56.3, "draft_accept": 0.81}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2", "test": "deep56k", "run": 0, "prompt_n": 54953, "pp_tps": 286.3, "gen_n": 128, "tg_tps": 10.4, "wall_s": 204.2, "draft_accept": 0.8}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2-fast", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 102.3, "gen_n": 512, "tg_tps": 25.2, "wall_s": 20.8, "draft_accept": 0.81}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2-fast", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 407.9, "gen_n": 148, "tg_tps": 23.7, "wall_s": 40.6, "draft_accept": 0.79}
+{"label": "ista-swap", "model": "qwen-3.8-27B-iq2-fast", "test": "deep56k", "run": 0, "prompt_n": 54953, "pp_tps": 348.9, "gen_n": 128, "tg_tps": 19.3, "wall_s": 164.1, "draft_accept": 0.8}
+{"label": "ista-48k-nomtp", "model": "qwen-3.8-27B-iq2", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 158.4, "gen_n": 512, "tg_tps": 21.7, "wall_s": 23.9}
+{"label": "ista-48k-nomtp", "model": "qwen-3.8-27B-iq2", "test": "long", "run": 0, "prompt_n": 13970, "pp_tps": 447.3, "gen_n": 142, "tg_tps": 19.4, "wall_s": 38.7}
+{"label": "cpu-check", "model": "qwen-3.8-27B-iq2", "test": "short", "run": 0, "prompt_n": 41, "pp_tps": 161.0, "gen_n": 512, "tg_tps": 21.7, "wall_s": 23.9}

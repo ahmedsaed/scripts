@@ -1,0 +1,40 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:nightly
+    container_name: vllm-qwen
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HUB_ENABLE_HF_TRANSFER=1
+      - HF_HUB_VERBOSE=1
+    ports:
+      - "8001:8000"
+    volumes:
+      - ~/apps/huggingface:/root/.cache/huggingface
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: >
+      --model cyankiwi/Qwen3.5-9B-AWQ-4bit
+      --max-model-len 22214
+      --max-num-seqs 1
+      --gpu-memory-utilization 0.90
+      --cpu-offload-gb 4
+      --trust-remote-code
+      --reasoning-parser qwen3
+      --enable-auto-tool-choice
+      --language-model-only
+      --tool-call-parser qwen3_coder
+      --kv-cache-dtype fp8
+      --enable-prefix-caching
+      --attention-backend flashinfer
+      --max-num-batched-tokens 8192
+      --mm-encoder-tp-mode data
+#      --enable-chunked-prefill
+#      --enforce-eager
+#      --kv-offloading-size 10
+
