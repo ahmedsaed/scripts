@@ -53,8 +53,8 @@ services:
   ntfy-gate:
     container_name: ntfy-gate
     restart: unless-stopped
-    image: python:3.12-alpine
-    command: ["python", "-u", "/app/gate.py"]
+    build: ./ntfy-gate
+    image: ntfy-gate:local
     environment:
       TZ: Africa/Cairo
       UPSTREAM: https://ntfy.server.ahmedsaed.me
@@ -66,13 +66,27 @@ services:
       NTFY_TOKEN: ${FN_NTFY_TOKEN}
       POLL_INTERVAL: "30"
       OFFLINE_AFTER: "120"
+      # Presence lights: switch on when a person stays 10s in the backyard, off 10 min after the last sighting
+      MQTT_HOST: mosquitto
+      LIGHT_DEVICE: backyard_lights
+      LIGHT_CAMERAS: backyardSide,backyardCenter,backdoor
+      PRESENCE_SECONDS: "10"
+      LIGHT_ON_SECONDS: "600"
+      # Only after sunset / before sunrise (Cairo); remove both to switch on at any time of day
+      LIGHT_LAT: "30.04"
+      LIGHT_LON: "31.24"
     volumes:
-      - ./ntfy-gate/gate.py:/app/gate.py:ro
+      - ./ntfy-gate:/app:ro
+      - ${HOME}/apps/ntfy-gate:/data
     networks:
       - frigate-net
+      - zigbee
 
 networks:
   frigate-net:
+  zigbee:
+    external: true
+    name: zigbee
   nginx-proxy:
     external: true
     name: nginx-proxy

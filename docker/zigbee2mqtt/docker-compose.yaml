@@ -1,0 +1,48 @@
+services:
+  mosquitto:
+    container_name: mosquitto
+    restart: unless-stopped
+    image: eclipse-mosquitto:2.1.2-alpine
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ${HOME}/apps/zigbee2mqtt/mosquitto/data:/mosquitto/data
+    networks:
+      - zigbee
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    restart: unless-stopped
+    image: koenkk/zigbee2mqtt:2.14.2
+    depends_on:
+      - mosquitto
+    environment:
+      TZ: Africa/Cairo
+      ZIGBEE2MQTT_CONFIG_FRONTEND_AUTH_TOKEN: ${Z2M_FRONTEND_TOKEN}
+    volumes:
+      - ${HOME}/apps/zigbee2mqtt/data:/app/data
+      - /run/udev:/run/udev:ro
+    devices:
+      # Sonoff Zigbee 3.0 USB Dongle Plus (CC2652P, Z-Stack)
+      - /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_f077b0840f75f011b188a32f1045c30f-if00-port0:/dev/ttyUSB0
+    ports:
+      - "8099:8080" # Web UI (pairing / device management)
+    networks:
+      - zigbee
+      - nginx-proxy
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  zigbee:
+    name: zigbee
+  nginx-proxy:
+    external: true
+    name: nginx-proxy

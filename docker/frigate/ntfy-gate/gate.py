@@ -28,6 +28,8 @@ import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
+import lights
+
 UPSTREAM = os.environ["UPSTREAM"].rstrip("/")
 COOLDOWN = float(os.environ.get("COOLDOWN", "180"))
 CAMERA_HEADER = "X-Camera"
@@ -247,4 +249,5 @@ if __name__ == "__main__":
     log.info("upstream=%s cooldown=%ss groups=%s", UPSTREAM, COOLDOWN, CAMERA_GROUPS)
     if FRIGATE_URL:
         threading.Thread(target=watch, daemon=True).start()
+    lights.start()
     ThreadingHTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
